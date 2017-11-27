@@ -1,7 +1,6 @@
 package com.lennart.controller;
 
-import com.lennart.model.headlinesFE.BuzzWord;
-import com.lennart.model.headlinesFE.RetrieveBuzzwords;
+import com.lennart.model.ImageDbService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -26,16 +25,13 @@ public class Controller extends SpringBootServletInitializer {
         SpringApplication.run(Controller.class, args);
     }
 
-    @RequestMapping(value = "/getCryptoBuzzWords", method = RequestMethod.POST)
-    public @ResponseBody List<BuzzWord> sendCryptoBuzzWordsToClient(@RequestBody int numberOfHours) throws Exception {
-        List<BuzzWord> buzzWords = new RetrieveBuzzwords().retrieveBuzzWordsFromDbInitialCrypto("crypto_buzzwords_new", numberOfHours);
-        return buzzWords;
-    }
-
     @RequestMapping(value = "/postImageUrl", method = RequestMethod.POST)
     public void postImageUrl(@RequestBody String imageUrl) throws Exception {
-        System.out.println(imageUrl);
+        new ImageDbService().storeImageLinkInDb(imageUrl);
     }
 
-
+    @RequestMapping(value = "/getImageLinks", method = RequestMethod.POST)
+    public @ResponseBody List<String> sendImageLinksToClient() throws Exception {
+        return new ImageDbService().retrieveImageLinksFromDb();
+    }
 }
