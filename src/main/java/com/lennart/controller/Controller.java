@@ -32,5 +32,10 @@ public class Controller extends SpringBootServletInitializer {
         return buzzWords;
     }
 
+    @RequestMapping(value = "/postImageUrl", method = RequestMethod.POST)
+    public void postImageUrl(@RequestBody String imageUrl) throws Exception {
+        System.out.println(imageUrl);
+    }
+
 
 }

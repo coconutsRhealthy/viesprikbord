@@ -1,11 +1,13 @@
 <html>
 <head>
-    <title>Crypto Buzzwords</title>
+    <title>Headl1nes</title>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
     <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="js/cryptoscript.js"></script>
+    <script src="js/newscript22.js"></script>
 
-    <title>Cryptobuzzwords - The most efficient way to follow crypto news</title>
+    <meta name="description" content="Headl1nes.com identifies currently trending headlines in the news">
+
+    <title>Headl1nes - Live tracking of trending headlines</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,72 +15,59 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-104362522-1', 'auto');
-      ga('send', 'pageview');
     </script>
 </head>
 
 <body>
 <div class="container-fluid">
-    <div ng-app = "mainApp" ng-controller = "buzzwordsController">
+    <div ng-app = "mainApp" ng-controller = "topicsController">
         <div ng-show=showPage>
 
             <div class="wrapper">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <span class="navbar-brand" href="/" style="color:rgb(66, 188, 147)">Crypto Buzzwords</span>
+                <nav id="navbar_id" class="navbar navbar-default" role="navigation">
+                    <div id="site-title-big" class="col-sm-12 text-center hidden-xs navbar-brand">Headl1nes</div>
+
+                    <div class="navbar-header">
+                        <a id="site-title-xs-margin" class="navbar-brand visible-xs" href="/" style="color:rgb(66, 188, 147)">Headl1nes</a>
+                        <button id="menu-button-xs-margin" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#xs-menu">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="visible-xs">
+                        <div class="collapse navbar-collapse" id="xs-menu">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/">Home</a></li>
+                                <li><a href="upload.html">Upload</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="outer">
+                        <div id="inner">
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="/">Home</a></li>
+                                    <li><a href="upload.html">Upload</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </nav>
 
-                <div id="hour-restriction-buttons" class="btn-group">
-                    <button class={{hour3buttonclass}} ng-click="loadInitialWordsHoursRestriction(3)" type="button"><font size="1">Last 3 hours</font></button>
-                    <button class={{hour6buttonclass}} ng-click="loadInitialWordsHoursRestriction(6)" type="button"><font size="1">Last 6 hours</font></button>
-                    <button class={{hour12buttonclass}} ng-click="loadInitialWordsHoursRestriction(12)" type="button"><font size="1">Last 12 hours</font></button>
-                    <button class={{hour24buttonclass}} ng-click="loadInitialWordsHoursRestriction(24)" type="button"><font size="1">Last 24 hours</font></button>
-                </div>
-
                 <div class="row">
-                    <a href="" ng-click="changeOrderType('word')" id="firstRow2" class="col-xs-2"><font size="1"><b>Buzzword</b></font></a>
-                    <a href="" ng-click="changeOrderType('group')" id="firstRowXx" class="col-xs-3"><font size="1"><b>Related<br> words</b></font></a>
-                    <a href="" ng-click="changeOrderType('headlines.length')" id="firstRow3" class="col-xs-3"><font size="1"><b>Buzzing<br> strength</b></font></a>
-                </div>
-
-                <div class="row" ng-repeat="buzzWord in buzzWords | orderBy : orderType">
-                    <div class="col-xs-2"><a class="underline_link" href="" ng-click="testfunctie(buzzWord)">{{buzzWord.word}}</a></div>
-
-                    <div class="col-xs-3">
-                        <span style="{{getGroupColour(buzzWord.group)}}">■</span>
-                    </div>
-
-                    <div class="col-xs-3">
-                        <span ng-repeat="i in [1, 2, 3, 4]" style="{{getBulletColour(buzzWord.headlines, i)}}">●</span>
-                    </div>
-
-                    <div ng-show="check(buzzWord)" class="col-xs-12">
-                        <ul class="custom-bullet">
-                            <div ng-show="check(buzzWord)" ng-repeat="headline in buzzWord.headlines track by $index">
-                                <li>
-                                    <div><a href={{buzzWord.links[$index]}}>{{headline}}</a></div>
-                                    <div><small class="text-muted">{{buzzWord.sites[$index]}}</small></div>
-                                </li>
-                            </div>
-                        </ul>
-                    </div>
-
+                    Hello index
                 </div>
 
                 <div class="push"></div>
             </div>
 
             <div class="footer">
-                <p class="footer-text">(c) 2017, cryptobuzzwords@gmail.com</p>
+                <p class="footer-text text-center">Copyright (c) 2017, headl1nes.com</p>
             </div>
         </div>
     </div>
