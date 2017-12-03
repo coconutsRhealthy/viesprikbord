@@ -68,7 +68,7 @@ h4 {
 }
 
 .main-headline {
-    padding-bottom: 6;
+    padding-bottom: 25px;
 }
 
 .metadata-headline {
@@ -99,7 +99,6 @@ h4 {
   object-fit: cover;
   width: 100%;
   height: 250px;
-  padding-bottom: 25px;
 }
 
 .about {
@@ -144,7 +143,6 @@ h4 {
     .fixed-height-image {
         width: 100%;
         height: auto;
-        padding-bottom: 23px;
     }
 
     .col-sm-1 {
