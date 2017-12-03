@@ -66,15 +66,21 @@
                         <div class="clearfix visible-md" ng-if="$index % 3 == 0"></div>
                         <div class="clearfix visible-lg" ng-if="$index % 3 == 0"></div>
                         <div class="col-sm-6 col-md-4">
-                            <div class="image-headline-block">
-                                <div class="main-headline">
+                            <div class="main-headline">
+                                <a class="larger-image" ng-click="lightboxFunction(imageLink)" href="" data-toggle="modal" data-target="#myModal">
                                     <img class="fixed-height-image" src={{imageLink}}>
-                                </div>
+                                </a>
+                                <img class="mobile-image fixed-height-image" src={{imageLink}}>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-1"></div>
+
+                <div id="myModal" class="modal">
+                    <img class="modal-content" src={{lightBoxImageUrl}} />
+                </div>
+
             </div>
 
             <div class="push"></div>

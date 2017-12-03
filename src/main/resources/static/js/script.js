@@ -4,6 +4,7 @@ mainApp.controller('prikbordController', function($scope, $http) {
 
     $scope.imageUrlToPost;
     $scope.imageLinks;
+    $scope.lightBoxImageUrl;
 
     $http.post('/getImageLinks').success(function(data) {
         $scope.imageLinks = data;
@@ -15,4 +16,7 @@ mainApp.controller('prikbordController', function($scope, $http) {
        })
     }
 
+    $scope.lightboxFunction = function(imageUrl) {
+        $scope.lightBoxImageUrl = imageUrl;
+    }
 });
