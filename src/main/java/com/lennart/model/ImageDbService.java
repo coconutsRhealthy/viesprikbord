@@ -11,18 +11,18 @@ public class ImageDbService {
 
     protected Connection con;
 
-    public void storeImageLinkInDb(String imageLink) throws Exception {
+    public void storeImageLinkInDb(String superMarket, String imageLink, int rotation) throws Exception {
         initializeDbConnection();
 
         Statement st = con.createStatement();
-        st.executeUpdate("INSERT INTO image_urls (entry, image_url) VALUES ('" + (getHighestIntEntry() + 1) + "', '" + imageLink + "')");
+        st.executeUpdate("INSERT INTO image_urls (entry, supermarket, image_url, rotation) VALUES ('" + (getHighestIntEntry() + 1) + "', '" + superMarket + "', '" + imageLink +  "', '" + rotation + "')");
         st.close();
 
         closeDbConnection();
     }
 
-    public List<String> retrieveImageLinksFromDb() throws Exception {
-        List<String> imageLinks = new ArrayList<>();
+    public List<Image> retrieveImagesFromDb() throws Exception {
+        List<Image> images = new ArrayList<>();
 
         initializeDbConnection();
 
@@ -31,14 +31,15 @@ public class ImageDbService {
         ResultSet rs = st.executeQuery(sql);
 
         while(rs.next()) {
-            imageLinks.add(rs.getString("image_url"));
+            Image image = new Image(rs.getString("supermarket"), rs.getString("image_url"), rs.getInt("rotation"));
+            images.add(image);
         }
 
         st.close();
         rs.close();
         closeDbConnection();
 
-        return imageLinks;
+        return images;
     }
 
     private int getHighestIntEntry() throws Exception {

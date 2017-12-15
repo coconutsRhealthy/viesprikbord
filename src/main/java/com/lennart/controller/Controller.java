@@ -1,5 +1,6 @@
 package com.lennart.controller;
 
+import com.lennart.model.Image;
 import com.lennart.model.ImageDbService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -26,12 +27,16 @@ public class Controller extends SpringBootServletInitializer {
     }
 
     @RequestMapping(value = "/postImageUrl", method = RequestMethod.POST)
-    public void postImageUrl(@RequestBody String imageUrl) throws Exception {
-        new ImageDbService().storeImageLinkInDb(imageUrl);
+    public void postImageUrl(@RequestBody Object[] adData) throws Exception {
+        String superMarket = (String) adData[0];
+        String imageLink = (String) adData[1];
+        int rotation = (int) adData[2];
+
+        new ImageDbService().storeImageLinkInDb(superMarket, imageLink, rotation);
     }
 
-    @RequestMapping(value = "/getImageLinks", method = RequestMethod.POST)
-    public @ResponseBody List<String> sendImageLinksToClient() throws Exception {
-        return new ImageDbService().retrieveImageLinksFromDb();
+    @RequestMapping(value = "/getImages", method = RequestMethod.POST)
+    public @ResponseBody List<Image> sendImagesToClient() throws Exception {
+        return new ImageDbService().retrieveImagesFromDb();
     }
 }
