@@ -26,4 +26,20 @@ public class Image {
     public void setSuperMarket(String superMarket) {
         this.superMarket = superMarket;
     }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
+    public int getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(int rotation) {
+        this.rotation = rotation;
+    }
 }

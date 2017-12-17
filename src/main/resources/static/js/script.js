@@ -3,17 +3,20 @@ var mainApp = angular.module("mainApp", []);
 mainApp.controller('prikbordController', function($scope, $http) {
 
     $scope.imageUrlToPost = '';
-    $scope.imageLinks;
+    $scope.images;
     $scope.lightBoxImageUrl;
-    $scope.style = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg);"
+    $scope.lightBoxImageStyle;
+    $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg);"
     $scope.superMarkets = ["AH Helmholtzstraat"];
     $scope.selectedSupermarket = "AH Helmholtzstraat";
     $scope.showPreviewImage = false;
     $scope.rotation = 0;
     $scope.dataToSend = [];
 
+    $scope.styleImage;
+
     $http.post('/getImages').success(function(data) {
-        $scope.imageLinks = data;
+        $scope.images = data;
     })
 
     $scope.postImageUrl = function() {
@@ -24,27 +27,36 @@ mainApp.controller('prikbordController', function($scope, $http) {
        })
     }
 
-    $scope.lightboxFunction = function(imageUrl) {
+    $scope.lightboxFunction = function(imageUrl, rotation) {
         $scope.lightBoxImageUrl = imageUrl;
+        $scope.lightBoxImageStyle = getLightBoxImageStyle(rotation);
     }
 
     $scope.flip = function() {
-        if($scope.style.includes("(0deg)")) {
-            $scope.style = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(deg); -moz-transform: rotate(90deg); -o-transform: rotate(90deg); -ms-transform: rotate(90deg); transform: rotate(90deg);"
+        if($scope.styleUploadPreview.includes("(0deg)")) {
+            $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(deg); -moz-transform: rotate(90deg); -o-transform: rotate(90deg); -ms-transform: rotate(90deg); transform: rotate(90deg);"
             $scope.rotation = 90;
-        } else if($scope.style.includes("(90deg)")) {
-            $scope.style = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg);"
+        } else if($scope.styleUploadPreview.includes("(90deg)")) {
+            $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg);"
             $scope.rotation = 180;
-        } else if($scope.style.includes("(180deg)")) {
-            $scope.style = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(deg); -moz-transform: rotate(270deg); -o-transform: rotate(270deg); -ms-transform: rotate(270deg); transform: rotate(270deg);"
+        } else if($scope.styleUploadPreview.includes("(180deg)")) {
+            $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(deg); -moz-transform: rotate(270deg); -o-transform: rotate(270deg); -ms-transform: rotate(270deg); transform: rotate(270deg);"
             $scope.rotation = 270;
-        } else if($scope.style.includes("(270deg)")) {
-            $scope.style = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg);"
+        } else if($scope.styleUploadPreview.includes("(270deg)")) {
+            $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg);"
             $scope.rotation = 0;
         }
     }
 
     $scope.showPreview = function() {
         $scope.showPreviewImage = true;
+    }
+
+    $scope.getImageStyle = function(rotation) {
+        return "-webkit-transform: rotate(deg); -moz-transform: rotate(" + rotation + "deg); -o-transform: rotate(" + rotation + "deg); -ms-transform: rotate(" + rotation + "deg); transform: rotate(" + rotation + "deg);"
+    }
+
+    function getLightBoxImageStyle(rotation) {
+        return "-webkit-transform: rotate(deg); -moz-transform: rotate(" + rotation + "deg); -o-transform: rotate(" + rotation + "deg); -ms-transform: rotate(" + rotation + "deg); transform: rotate(" + rotation + "deg);"
     }
 });
