@@ -82,26 +82,13 @@
                     </div>
                 </div>
                 <div class="col-xs-9 col-sm-10 col-md-10 col-lg-8">
-                    2. Kopieer de link van je afbeelding
-                </div>
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-2"></div>
-            </div>
-
-            <div class="upload-bullet row">
-                <div class="col-xs-2 col-sm-1 col-md-1 col-lg-2">
-                    <div class="row">
-                        <div class="col-sm-10"></div>
-                        <div class="col-sm-2"><span class="ah glyphicon glyphicon-arrow-right"></span></div>
-                    </div>
-                </div>
-                <div class="col-xs-9 col-sm-10 col-md-10 col-lg-8">
-                    3. Plak de link in onderstaand veld
+                    2. Kopieer de link van je afbeelding en plak deze in onderstaand veld
                     <div class="margin-top-7">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" ng-model="imageUrlToPost" placeholder="Bijv: http://tinyimg.io/i/test.jpeg">
-                        </div>
-                    </form>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="imageUrlToPost" placeholder="Bijv: http://tinyimg.io/i/test.jpeg">
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-2"></div>
@@ -115,9 +102,9 @@
                     </div>
                 </div>
                 <div class="col-xs-9 col-sm-10 col-md-10 col-lg-8">
-                    4. Draai de afbeelding naar de juiste stand indien nodig
+                    3. Draai de afbeelding naar de juiste stand indien nodig
                     <div class="margin-top-7" ng-show="imageUrlToPost != ''">
-                        <img src="{{imageUrlToPost}}" style="{{style}}" />
+                        <img src="{{imageUrlToPost}}" style="{{styleUploadPreview}}" />
                     </div>
                     <div class="margin-top-7" ng-show="imageUrlToPost != ''">
                         <button class="btn btn-default" ng-click="flip()">
@@ -136,7 +123,7 @@
                     </div>
                 </div>
                 <div class="col-xs-9 col-sm-10 col-md-10 col-lg-8">
-                    5. Kies de supermarkt waar je de advertentie wilt plaatsen
+                    4. Kies de supermarkt waar je de advertentie wilt plaatsen
                     <div class="margin-top-7">
                         <select ng-model="selectedSupermarket" ng-options="x for x in superMarkets">
                         </select>
@@ -153,7 +140,7 @@
                     </div>
                 </div>
                 <div class="col-xs-9 col-sm-10 col-md-10 col-lg-8">
-                    6. Druk op Post. Je advertentie is meteen te zien op de pagina van de supermarkt die jij geselecteerd hebt
+                    5. Druk op Post. Je advertentie is meteen te zien op de pagina van de supermarkt die jij geselecteerd hebt
                     <div class="margin-top-7">
                         <button class="btn btn-default" ng-click="postImageUrl()">
                             Post
