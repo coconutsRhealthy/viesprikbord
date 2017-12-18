@@ -27,9 +27,8 @@ mainApp.controller('prikbordController', function($scope, $http) {
        })
     }
 
-    $scope.lightboxFunction = function(imageUrl, rotation) {
+    $scope.setLightBoxImageUrl = function(imageUrl, rotation) {
         $scope.lightBoxImageUrl = imageUrl;
-        $scope.lightBoxImageStyle = getLightBoxImageStyle(rotation);
     }
 
     $scope.flip = function() {
@@ -52,11 +51,62 @@ mainApp.controller('prikbordController', function($scope, $http) {
         $scope.showPreviewImage = true;
     }
 
-    $scope.getImageStyle = function(rotation) {
-        return "-webkit-transform: rotate(deg); -moz-transform: rotate(" + rotation + "deg); -o-transform: rotate(" + rotation + "deg); -ms-transform: rotate(" + rotation + "deg); transform: rotate(" + rotation + "deg);"
+//    $scope.getImageStyle = function(rotation) {
+//
+////        var toReturn = '';
+////
+////        if(rotation == 90) {
+////            toReturn = "height: 250px; width: 250px; -webkit-transform: rotate(deg); -moz-transform: rotate(" + rotation + "deg); -o-transform: rotate(" + rotation + "deg); -ms-transform: rotate(" + rotation + "deg); transform: rotate(" + rotation + "deg);"
+////        } else {
+////            toReturn = "-webkit-transform: rotate(deg); -moz-transform: rotate(" + rotation + "deg); -o-transform: rotate(" + rotation + "deg); -ms-transform: rotate(" + rotation + "deg); transform: rotate(" + rotation + "deg);"
+////        }
+////        return toReturn;
+//
+//        return "-webkit-transform: rotate(deg); -moz-transform: rotate(" + rotation + "deg); -o-transform: rotate(" + rotation + "deg); -ms-transform: rotate(" + rotation + "deg); transform: rotate(" + rotation + "deg);"
+//    }
+
+
+//    $scope.getImageClass = function(rotation) {
+//        if(rotation == 90) {
+//            return "fixed-height-image rotated-90";
+//        } else if(rotation == 180) {
+//            return "fixed-height-image rotated-180";
+//        } else if(rotation == 270) {
+//            return "fixed-height-image rotated-270";
+//        } else {
+//            return "fixed-height-image";
+//        }
+//    }
+
+
+
+//    function getLightBoxImageClass(rotation) {
+//        if(rotation == 90) {
+//            return "modal rotated-90";
+//        } else if(rotation == 180) {
+//            return "modal rotated-180";
+//        } else if(rotation == 270) {
+//            return "modal rotated-270";
+//        } else {
+//            return "modal";
+//        }
+//
+//
+//        //return "-webkit-transform: rotate(deg); -moz-transform: rotate(" + rotation + "deg); -o-transform: rotate(" + rotation + "deg); -ms-transform: rotate(" + rotation + "deg); transform: rotate(" + rotation + "deg);"
+//    }
+
+
+    $scope.getRotationClass = function(rotation) {
+        if(rotation == 90) {
+            return "rotated-90";
+        } else if(rotation == 180) {
+            return "rotated-180";
+        } else if(rotation == 270) {
+            return "rotated-270";
+        } else {
+            return "";
+        }
     }
 
-    function getLightBoxImageStyle(rotation) {
-        return "-webkit-transform: rotate(deg); -moz-transform: rotate(" + rotation + "deg); -o-transform: rotate(" + rotation + "deg); -ms-transform: rotate(" + rotation + "deg); transform: rotate(" + rotation + "deg);"
-    }
+
 });
