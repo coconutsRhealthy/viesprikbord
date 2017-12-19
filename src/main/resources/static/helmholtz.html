@@ -3,6 +3,7 @@
     <title>Headl1nes</title>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
     <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
 
     <meta name="description" content="Headl1nes.com identifies currently trending headlines in the news">
@@ -71,8 +72,8 @@
                         <div class="clearfix visible-lg" ng-if="$index % 3 == 0"></div>
                         <div class="col-sm-6 col-md-4">
                             <div class="main-headline">
-                                <a ng-click="setLightBoxImageUrl(image.imageLink)" href="" data-toggle="modal" data-target="#myModal">
-                                    <img id="a{{$index}}" class="fixed-height-image {{getRotationClass(image.rotation)}}" src={{image.imageLink}} />
+                                <a ng-click="lightboxFunction(image.imageLink, image.rotation)" href="" data-toggle="modal" data-target="#myModal">
+                                    <img class="fixed-height-image {{getRotationClass(image.rotation)}}" src={{image.imageLink}} />
                                 </a>
                             </div>
                         </div>
@@ -80,7 +81,7 @@
                 </div>
                 <div class="col-sm-1"></div>
 
-                <div id="myModal" class="modal {{getRotationClass(image.rotation)}}">
+                <div id="myModal" class="modal {{getLightBoxRotationClass()}}">
                     <img class="modal-content" src={{lightBoxImageUrl}} />
                 </div>
 

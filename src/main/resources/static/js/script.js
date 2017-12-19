@@ -1,3 +1,22 @@
+
+
+
+
+
+// Get the modal
+//var modal = document.getElementById('myModal');
+
+// When the user clicks anywhere outside of the modal, close it
+//window.onclick = function(event) {
+//
+//        //$('#myModal').modal('hide');
+//
+//        //alert("eije");
+//        //modal.style.display = "none";
+//
+//}
+
+
 var mainApp = angular.module("mainApp", []);
 
 mainApp.controller('prikbordController', function($scope, $http) {
@@ -5,7 +24,7 @@ mainApp.controller('prikbordController', function($scope, $http) {
     $scope.imageUrlToPost = '';
     $scope.images;
     $scope.lightBoxImageUrl;
-    $scope.lightBoxImageStyle;
+    $scope.lightBoxRotation;
     $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg);"
     $scope.superMarkets = ["AH Helmholtzstraat"];
     $scope.selectedSupermarket = "AH Helmholtzstraat";
@@ -13,7 +32,11 @@ mainApp.controller('prikbordController', function($scope, $http) {
     $scope.rotation = 0;
     $scope.dataToSend = [];
 
+    $scope.lightBoxOpen;
+
     $scope.styleImage;
+
+    $scope.second;
 
     $http.post('/getImages').success(function(data) {
         $scope.images = data;
@@ -27,8 +50,13 @@ mainApp.controller('prikbordController', function($scope, $http) {
        })
     }
 
-    $scope.setLightBoxImageUrl = function(imageUrl, rotation) {
+    $scope.lightboxFunction =  function(imageUrl, rotation) {
         $scope.lightBoxImageUrl = imageUrl;
+        $scope.lightBoxRotation = rotation;
+
+        $scope.lightBoxOpen = true;
+
+        $scope.second = false;
     }
 
     $scope.flip = function() {
@@ -107,6 +135,46 @@ mainApp.controller('prikbordController', function($scope, $http) {
             return "";
         }
     }
+
+    $scope.getLightBoxRotationClass = function() {
+        if($scope.lightBoxRotation == 90) {
+            return "rotated-90";
+        } else if($scope.lightBoxRotation == 180) {
+            return "rotated-180";
+        } else if($scope.lightBoxRotation == 270) {
+            return "rotated-270";
+        } else {
+            return "";
+        }
+    }
+
+
+
+        window.onclick = function(event) {
+            if($scope.lightBoxOpen == true) {
+                //$('#myModal').modal('hide');
+                //$scope.lightBoxOpen == false;
+
+                alert("0");
+
+                if($scope.second == false) {
+                    alert("1");
+                    $scope.second == true;
+                } else {
+                    alert("2");
+                    $('#myModal').modal('hide');
+                    $scope.second = false;
+                    $scope.lightBoxOpen == false;
+                }
+            }
+
+
+
+                //alert("eije");
+                //modal.style.display = "none";
+
+        }
+
 
 
 });

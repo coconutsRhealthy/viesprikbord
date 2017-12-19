@@ -206,12 +206,10 @@ h4 {
     }
 
     .fixed-height-image {
-      width: 100%;
-      height: auto;
+      width: 100vw;
+      height: 100vw;
       border: 1px solid rgb(59, 159, 226);
     }
-
-
 }
 
 .modal-content {
@@ -222,10 +220,6 @@ h4 {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-}
-
-#myModal {
-    transform: rotate(90deg);
 }
 
 .upload-bullet {
@@ -268,11 +262,3 @@ h4 {
     -ms-transform: rotate(270deg);
     transform: rotate(270deg);
 }
-
-#a11 {
-    width: auto !important;
-    height: 100% !important;
-}
-
-
-https://stackoverflow.com/questions/21537806/css-height-same-as-width
