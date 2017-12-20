@@ -7,7 +7,7 @@ mainApp.controller('prikbordController', function($scope, $http) {
     $scope.lightBoxImageUrl;
     $scope.lightBoxRotation;
     $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg);"
-    $scope.superMarkets = ["AH Helmholtzstraat"];
+    $scope.superMarkets = ["AH Helmholtzstraat", "sjenkie"];
     $scope.selectedSupermarket = "AH Helmholtzstraat";
     $scope.showPreviewImage = false;
     $scope.rotation = 0;
@@ -88,5 +88,12 @@ mainApp.controller('prikbordController', function($scope, $http) {
             }
 
         }
+    }
+
+
+
+
+    $scope.eije = function() {
+        window.location.href = "http://www.efteling.com";
     }
 });
