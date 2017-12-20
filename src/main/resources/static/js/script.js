@@ -7,23 +7,36 @@ mainApp.controller('prikbordController', function($scope, $http) {
     $scope.lightBoxImageUrl;
     $scope.lightBoxRotation;
     $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg);"
-    $scope.superMarkets = ["AH Helmholtzstraat", "sjenkie"];
-    $scope.selectedSupermarket = "AH Helmholtzstraat";
+    $scope.selectedSupermarket;
     $scope.showPreviewImage = false;
     $scope.rotation = 0;
     $scope.dataToSend = [];
     $scope.lightBoxOpen;
     $scope.counter = 0;
+    $scope.postButtonIsDisabled = false;
 
-    $http.post('/getImages').success(function(data) {
-        $scope.images = data;
-    })
+    var page = window.location.href;
+
+    if(page.includes("helmholtz") || page.includes("coganeplein")) {
+        var superMarketToSendToServer;
+
+        if($scope.selectedSupermarket == null && page.includes("helmholtz")) {
+            superMarketToSendToServer = "AH Helmholtzstraat";
+        }
+        if($scope.selectedSupermarket == null && page.includes("coganeplein")) {
+            superMarketToSendToServer = "AH Land van Cocagneplein";
+        }
+
+        $http.post('/getImages', superMarketToSendToServer).success(function(data) {
+            $scope.images = data;
+        })
+    }
 
     $scope.postImageUrl = function() {
        $scope.dataToSend = [$scope.selectedSupermarket, $scope.imageUrlToPost, $scope.rotation];
 
        $http.post('/postImageUrl', $scope.dataToSend).success(function(data) {
-           alert(data);
+            $scope.postButtonIsDisabled = true;
        })
     }
 
@@ -65,6 +78,18 @@ mainApp.controller('prikbordController', function($scope, $http) {
         }
     }
 
+    $scope.getRotationClassXsViewport = function(rotation) {
+        if(rotation == 90) {
+            return "fixed-height-image-vw-xs rotated-90";
+        } else if(rotation == 180) {
+            return "fixed-height-image rotated-180";
+        } else if(rotation == 270) {
+            return "fixed-height-image-vw-xs rotated-270";
+        } else {
+            return "fixed-height-image";
+        }
+    }
+
     $scope.getLightBoxRotationClass = function() {
         if($scope.lightBoxRotation == 90) {
             return "rotated-90";
@@ -90,10 +115,11 @@ mainApp.controller('prikbordController', function($scope, $http) {
         }
     }
 
-
-
-
-    $scope.eije = function() {
-        window.location.href = "http://www.efteling.com";
+    $scope.goToSupermarktPage = function() {
+        if($scope.selectedSupermarket === "AH Helmholtzstraat") {
+            window.location.href = "http://localhost:8080/helmholtz.html";
+        } else if($scope.selectedSupermarket === "AH Land van Cocagneplein") {
+            window.location.href = "http://localhost:8080/coganeplein.html";
+        }
     }
 });

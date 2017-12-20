@@ -36,7 +36,7 @@ public class Controller extends SpringBootServletInitializer {
     }
 
     @RequestMapping(value = "/getImages", method = RequestMethod.POST)
-    public @ResponseBody List<Image> sendImagesToClient() throws Exception {
-        return new ImageDbService().retrieveImagesFromDb();
+    public @ResponseBody List<Image> sendImagesToClient(@RequestBody String superMarket) throws Exception {
+        return new ImageDbService().retrieveImagesFromDb(superMarket);
     }
 }

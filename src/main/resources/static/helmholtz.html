@@ -1,14 +1,14 @@
 <html>
 <head>
-    <title>Headl1nes</title>
+    <title>Advertentiebord</title>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
     <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
 
-    <meta name="description" content="Headl1nes.com identifies currently trending headlines in the news">
+    <meta name="description" content="Advertentiebord.com - Het online prikbord van jouw supermarkt">
 
-    <title>Headl1nes - Live tracking of trending headlines</title>
+    <title>Advertentiebord.com - Het online prikbord van jouw supermarkt</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -63,7 +63,9 @@
 
             <div class="row">
                 <div class="col-sm-12 text-center dropdown">
-                    <select ng-model="selectedSupermarket" ng-options="x for x in superMarkets" ng-change="eije()">  >
+                    <select ng-model="selectedSupermarket" ng-change="goToSupermarktPage()">
+                        <option value="">AH Helmholtzstraat</option>
+                        <option value="AH Land van Cocagneplein">AH Land van Cocagneplein</option>
                     </select>
                 </div>
             </div>
@@ -77,16 +79,18 @@
                         <div class="clearfix visible-lg" ng-if="$index % 3 == 0"></div>
                         <div class="col-sm-6 col-md-4">
                             <div class="main-headline">
-                                <a ng-click="lightboxFunction(image.imageLink, image.rotation)" href="" data-toggle="modal" data-target="#myModal">
+                                <a class="hidden-xs" ng-click="lightboxFunction(image.imageLink, image.rotation)" href="" data-toggle="modal" data-target="#myModal">
                                     <img class="fixed-height-image {{getRotationClass(image.rotation)}}" src={{image.imageLink}} />
                                 </a>
+
+                                <img class="visible-xs {{getRotationClassXsViewport(image.rotation)}}" src={{image.imageLink}} />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-1"></div>
 
-                <div id="myModal" class="modal {{getLightBoxRotationClass()}}">
+                <div id="myModal" class="hidden-xs modal {{getLightBoxRotationClass()}}">
                     <img class="modal-content" src={{lightBoxImageUrl}} />
                 </div>
 

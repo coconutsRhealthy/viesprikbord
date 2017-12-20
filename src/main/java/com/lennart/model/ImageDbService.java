@@ -21,13 +21,14 @@ public class ImageDbService {
         closeDbConnection();
     }
 
-    public List<Image> retrieveImagesFromDb() throws Exception {
+    public List<Image> retrieveImagesFromDb(String superMarket) throws Exception {
         List<Image> images = new ArrayList<>();
 
         initializeDbConnection();
 
         Statement st = con.createStatement();
-        String sql = ("SELECT * FROM image_urls ORDER BY entry DESC;");
+
+        String sql = ("SELECT * FROM image_urls WHERE supermarket = '" + superMarket + "' ORDER BY entry DESC;");
         ResultSet rs = st.executeQuery(sql);
 
         while(rs.next()) {
@@ -60,7 +61,7 @@ public class ImageDbService {
 
     protected void initializeDbConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prikbord", "root", "");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/words", "root", "Vuurwerk00");
     }
 
     protected void closeDbConnection() throws SQLException {

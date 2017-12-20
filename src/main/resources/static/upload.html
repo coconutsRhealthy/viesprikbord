@@ -1,13 +1,14 @@
 <html>
 <head>
-    <title>Headl1nes</title>
+    <title>Advertentiebord</title>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
     <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
 
-    <meta name="description" content="Headl1nes.com identifies currently trending headlines in the news">
+    <meta name="description" content="Advertentiebord.com - Het online prikbord van jouw supermarkt">
 
-    <title>Headl1nes - Live tracking of trending headlines</title>
+    <title>Advertentiebord.com - Het online prikbord van jouw supermarkt</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -123,7 +124,10 @@
                 <div class="col-xs-9 col-sm-10 col-md-10 col-lg-8">
                     4. Kies de supermarkt waar je de advertentie wilt plaatsen
                     <div class="margin-top-7">
-                        <select ng-model="selectedSupermarket" ng-options="x for x in superMarkets">
+                        <select ng-model="selectedSupermarket">
+                            <option value="">--Selecteer supermarkt--</option>
+                            <option value="AH Helmholtzstraat">AH Helmholtzstraat</option>
+                            <option value="AH Land van Cocagneplein">AH Land van Cocagneplein</option>
                         </select>
                     </div>
                 </div>
@@ -140,7 +144,7 @@
                 <div class="col-xs-9 col-sm-10 col-md-10 col-lg-8">
                     5. Druk op Post. Je advertentie is meteen te zien op de pagina van de supermarkt die jij geselecteerd hebt
                     <div class="margin-top-7">
-                        <button class="btn btn-default" ng-click="postImageUrl()">
+                        <button class="btn btn-default" ng-disabled="postButtonIsDisabled" ng-click="postImageUrl()">
                             Post
                         </button>
                     </div>

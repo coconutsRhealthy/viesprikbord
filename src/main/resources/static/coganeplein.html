@@ -61,18 +61,39 @@
                 </div>
             </nav>
 
-            <h4 class="text-center" style="margin-top: 80px; color:rgb(80, 80, 80);">Welkom op advertentiebord.com!</h4>
-
-            <h4 class="text-center" style="color:rgb(80, 80, 80)">Selecteer de supermarkt waar je het advertentiebord van wilt zien</h4>
-
-            <div class="row" style="margin-top: 20px; color:rgb(110, 110, 110);">
+            <div class="row">
                 <div class="col-sm-12 text-center dropdown">
                     <select ng-model="selectedSupermarket" ng-change="goToSupermarktPage()">
-                        <option value="">--Selecteer supermarkt--</option>
+                        <option value="">AH Land van Cocagneplein</option>
                         <option value="AH Helmholtzstraat">AH Helmholtzstraat</option>
-                        <option value="AH Land van Cocagneplein">AH Land van Cocagneplein</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1 col-md-1 col-lg-2"></div>
+                <div class="col-sm-10 col-md-10 col-lg-8">
+                    <div ng-repeat="image in images track by $index">
+                        <div class="clearfix visible-sm" ng-if="$index % 2 == 0"></div>
+                        <div class="clearfix visible-md" ng-if="$index % 3 == 0"></div>
+                        <div class="clearfix visible-lg" ng-if="$index % 3 == 0"></div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="main-headline">
+                                <a class="hidden-xs" ng-click="lightboxFunction(image.imageLink, image.rotation)" href="" data-toggle="modal" data-target="#myModal">
+                                    <img class="fixed-height-image {{getRotationClass(image.rotation)}}" src={{image.imageLink}} />
+                                </a>
+
+                                <img class="visible-xs {{getRotationClassXsViewport(image.rotation)}}" src={{image.imageLink}} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+
+                <div id="myModal" class="modal {{getLightBoxRotationClass()}}">
+                    <img class="modal-content" src={{lightBoxImageUrl}} />
+                </div>
+
             </div>
 
             <div class="push"></div>
