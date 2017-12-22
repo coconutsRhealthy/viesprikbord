@@ -66,12 +66,13 @@
             <h4 class="text-center" style="color:rgb(80, 80, 80)">Selecteer de supermarkt waar je het advertentiebord van wilt zien</h4>
 
             <div class="row" style="margin-top: 20px; color:rgb(110, 110, 110);">
-                <div class="col-sm-12 text-center dropdown">
-                    <select ng-model="selectedSupermarket" ng-change="goToSupermarktPage()">
-                        <option value="">--Selecteer supermarkt--</option>
-                        <option value="AH Helmholtzstraat">AH Helmholtzstraat</option>
-                        <option value="AH Land van Cocagneplein">AH Land van Cocagneplein</option>
-                    </select>
+                <div class="dropdown text-center">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Kies Supermarkt
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="helmholtz.html">AH Helmholtzstraat</a></li>
+                        <li><a href="coganeplein.html">AH Land van Cocagneplein</a></li>
+                    </ul>
                 </div>
             </div>
 

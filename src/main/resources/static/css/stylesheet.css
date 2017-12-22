@@ -270,7 +270,14 @@ h4 {
     transform: rotate(270deg);
 }
 
-.dropdown {
-    margin-top: 5px;
-    margin-bottom: 29px;
+.dropdown-menu {
+  left: 50% !important;
+  right: auto;
+  transform: translate(-50%, 0);
+}
+
+.h4-supermarket-page {
+  margin-top: -5px;
+  margin-bottom: 16px !important;
+  color:rgb(80, 80, 80);
 }
