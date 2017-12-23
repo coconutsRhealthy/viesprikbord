@@ -47,9 +47,9 @@ mainApp.controller('prikbordController', function($scope, $http) {
 
     function goToNewPlacedAdPage() {
         if($scope.supermarketForDbPost === "AH Helmholtzstraat") {
-            window.location.href = "http://localhost:8080/helmholtz.html";
+            window.location.href = "helmholtz.html";
         } else if($scope.supermarketForDbPost === "AH Land van Cocagneplein") {
-            window.location.href = "http://localhost:8080/coganeplein.html";
+            window.location.href = "coganeplein.html";
         }
     }
 

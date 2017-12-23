@@ -61,7 +61,7 @@ public class ImageDbService {
 
     protected void initializeDbConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/words", "root", "Vuurwerk00");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prikbord", "root", "Vuurwerk00");
     }
 
     protected void closeDbConnection() throws SQLException {
