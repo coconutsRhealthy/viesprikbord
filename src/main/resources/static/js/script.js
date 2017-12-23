@@ -7,37 +7,50 @@ mainApp.controller('prikbordController', function($scope, $http) {
     $scope.lightBoxImageUrl;
     $scope.lightBoxRotation;
     $scope.styleUploadPreview = "object-fit: cover; width: 200px; height: 200px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg);"
-    $scope.selectedSupermarket;
+    $scope.supermarketForDbPost = '';
     $scope.showPreviewImage = false;
     $scope.rotation = 0;
     $scope.dataToSend = [];
     $scope.lightBoxOpen;
     $scope.counter = 0;
-    $scope.postButtonIsDisabled = false;
+    $scope.postButtonIsDisabled = true;
+    $scope.chooseSupermarketButtonTextUpload = "Kies Supermarkt";
+    $scope.postButtonText = "Post";
+    $scope.postBtnCssClass = "btn-primary";
 
     var page = window.location.href;
 
-    if(page.includes("helmholtz") || page.includes("coganeplein")) {
-        var superMarketToSendToServer;
+    if(page.includes("helmholtz")) {
+        $http.post('/getImages', "AH Helmholtzstraat").success(function(data) {
+            $scope.images = data;
+        })
+    }
 
-        if($scope.selectedSupermarket == null && page.includes("helmholtz")) {
-            superMarketToSendToServer = "AH Helmholtzstraat";
-        }
-        if($scope.selectedSupermarket == null && page.includes("coganeplein")) {
-            superMarketToSendToServer = "AH Land van Cocagneplein";
-        }
-
-        $http.post('/getImages', superMarketToSendToServer).success(function(data) {
+    if(page.includes("coganeplein")) {
+        $http.post('/getImages', "AH Land van Cocagneplein").success(function(data) {
             $scope.images = data;
         })
     }
 
     $scope.postImageUrl = function() {
-       $scope.dataToSend = [$scope.selectedSupermarket, $scope.imageUrlToPost, $scope.rotation];
+       if($scope.postButtonText === "Bekijk je advertentie!") {
+          goToNewPlacedAdPage();
+       } else {
+          $scope.dataToSend = [$scope.supermarketForDbPost, $scope.imageUrlToPost, $scope.rotation];
 
-       $http.post('/postImageUrl', $scope.dataToSend).success(function(data) {
-            $scope.postButtonIsDisabled = true;
-       })
+          $http.post('/postImageUrl', $scope.dataToSend).success(function(data) {
+               $scope.postButtonText = "Bekijk je advertentie!";
+               $scope.postBtnCssClass = "btn-success";
+          })
+       }
+    }
+
+    function goToNewPlacedAdPage() {
+        if($scope.supermarketForDbPost === "AH Helmholtzstraat") {
+            window.location.href = "http://localhost:8080/helmholtz.html";
+        } else if($scope.supermarketForDbPost === "AH Land van Cocagneplein") {
+            window.location.href = "http://localhost:8080/coganeplein.html";
+        }
     }
 
     $scope.lightboxFunction =  function(imageUrl, rotation) {
@@ -115,11 +128,8 @@ mainApp.controller('prikbordController', function($scope, $http) {
         }
     }
 
-    $scope.goToSupermarktPage = function() {
-        if($scope.selectedSupermarket === "AH Helmholtzstraat") {
-            window.location.href = "http://localhost:8080/helmholtz.html";
-        } else if($scope.selectedSupermarket === "AH Land van Cocagneplein") {
-            window.location.href = "http://localhost:8080/coganeplein.html";
-        }
+    $scope.setSupermarketForDbPost = function(superMarket) {
+        $scope.chooseSupermarketButtonTextUpload = superMarket;
+        $scope.supermarketForDbPost = superMarket;
     }
 });

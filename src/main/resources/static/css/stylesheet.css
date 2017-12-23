@@ -147,7 +147,7 @@ h4 {
     border-color: rgb(243, 243, 255) !important;
 }
 
-@media (max-width: 676px) {
+@media (max-width: 767px) {
     .container-fluid {
       padding-left: 0px !important;
       padding-right: 0px !important;
@@ -270,7 +270,7 @@ h4 {
     transform: rotate(270deg);
 }
 
-.dropdown-menu {
+#dropdown-menu-homepage {
   left: 50% !important;
   right: auto;
   transform: translate(-50%, 0);
