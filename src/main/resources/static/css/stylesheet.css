@@ -1,30 +1,5 @@
 @import url('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css');
 
-.custom-bullet li {
-    display: block;
-}
-
-.custom-bullet li:before
-{
-    /*Using a Bootstrap glyphicon as the bullet point*/
-    content: "\e080";
-    font-family: 'Glyphicons Halflings';
-    font-size: 9px;
-    float: left;
-    margin-top: 4px;
-    margin-left: -17px;
-    color: #CCCCCC;
-}
-
-.custom-bullet {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.btn-group {
-    margin-top: 10;
-}
-
 * {
     margin: 0;
 }
@@ -64,28 +39,8 @@ h4 {
     margin-bottom: 3 !important;
 }
 
-.image-headline-block {
-    margin-bottom: 35;
-    background-color: rgb(243, 243, 243);
-}
-
 .main-headline {
     padding-bottom: 25px;
-}
-
-.metadata-headline {
-    margin-left: 5;
-    color: rgb(100, 100, 100);
-}
-
-.child-headlines {
-    margin-top: 5;
-    padding-bottom: 7;
-    margin-right: 8px;
-}
-
-.no-underline-link {
-    text-decoration: none !important;
 }
 
 #outer {
@@ -102,11 +57,6 @@ h4 {
   width: 250px;
   height: 250px;
   border: 1px solid rgb(59, 159, 226);
-}
-
-.about {
-    margin-left: 7px;
-    margin-right: 7px;
 }
 
 #site-title-big {
@@ -171,11 +121,6 @@ h4 {
         margin-bottom: 3 !important;
     }
 
-    .metadata-headline {
-        margin-left: 10;
-        color: rgb(100, 100, 100);
-    }
-
     .col-sm-1 {
         padding-left: 0px !important;
         padding-right: 0px !important;
@@ -220,13 +165,12 @@ h4 {
 }
 
 .modal-content {
-    margin: auto;
-    display: block;
-    max-height: 80% !important;
-    max-width: 80% !important;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 80%;
 }
 
 .upload-bullet {
