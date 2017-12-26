@@ -115,18 +115,18 @@ mainApp.controller('prikbordController', function($scope, $http) {
         }
     }
 
-    window.onclick = function(event) {
-        if($scope.lightBoxOpen == true) {
-            $scope.counter++;
-
-            if($scope.counter % 2 == 0) {
-                $('#myModal').modal('hide');
-                $scope.counter = 0;
-                $scope.lightBoxOpen == false;
-            }
-
-        }
-    }
+//    window.onclick = function(event) {
+//        if($scope.lightBoxOpen == true) {
+//            $scope.counter++;
+//
+//            if($scope.counter % 2 == 0) {
+//                $('#myModal').modal('hide');
+//                $scope.counter = 0;
+//                $scope.lightBoxOpen == false;
+//            }
+//
+//        }
+//    }
 
     $scope.setSupermarketForDbPost = function(superMarket) {
         $scope.chooseSupermarketButtonTextUpload = superMarket;

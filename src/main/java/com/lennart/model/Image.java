@@ -8,15 +8,17 @@ public class Image {
     private String superMarket;
     private String imageLink;
     private int rotation;
+    private String date;
 
     public Image() {
 
     }
 
-    public Image(String superMarket, String imageLink, int rotation) {
+    public Image(String superMarket, String imageLink, int rotation, String date) {
         this.superMarket = superMarket;
         this.imageLink = imageLink;
         this.rotation = rotation;
+        this.date = date;
     }
 
     public String getSuperMarket() {
@@ -41,5 +43,13 @@ public class Image {
 
     public void setRotation(int rotation) {
         this.rotation = rotation;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
