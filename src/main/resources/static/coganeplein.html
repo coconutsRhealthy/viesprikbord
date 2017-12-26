@@ -66,11 +66,17 @@
                         <div class="clearfix visible-lg" ng-if="$index % 3 == 0"></div>
                         <div class="col-sm-6 col-md-4">
                             <div class="main-headline">
-                                <a class="hidden-xs" ng-click="lightboxFunction(image.imageLink, image.rotation)" href="" data-toggle="modal" data-target="#myModal">
-                                    <img class="fixed-height-image {{getRotationClass(image.rotation)}}" src={{image.imageLink}} />
-                                </a>
+                                <div>
+                                    <a class="hidden-xs" ng-click="lightboxFunction(image.imageLink, image.rotation)" href="" data-toggle="modal" data-target="#myModal">
+                                        <img class="fixed-height-image {{getRotationClass(image.rotation)}}" src={{image.imageLink}} />
+                                    </a>
+                                </div>
+                                <small class="hidden-xs" style="color: rgb(80, 80, 80)">{{image.date}}</small>
 
-                                <img class="visible-xs {{getRotationClassXsViewport(image.rotation)}}" src={{image.imageLink}} />
+                                <div>
+                                    <img class="visible-xs {{getRotationClassXsViewport(image.rotation)}}" src={{image.imageLink}} />
+                                </div>
+                                <small class="visible-xs" style="color: rgb(80, 80, 80)">{{image.date}}</small>
                             </div>
                         </div>
                     </div>

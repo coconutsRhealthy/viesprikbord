@@ -126,7 +126,7 @@ public class ImageDbService {
 
     private String getCurrentDateTime() {
         java.util.Date date = new Date();
-        date = DateUtils.addHours(date, 2);
+        date = DateUtils.addHours(date, 1);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(date);
     }
