@@ -76,6 +76,15 @@ h4 {
     color: rgb(0, 0, 0) !important;
 }
 
+.home-link {
+  color: rgb(255, 255, 255) !important;
+}
+
+.home-link:hover {
+    color: rgb(255, 255, 255) !important;
+    text-decoration: none !important;
+}
+
 .icon-bar {
     background-color: rgb(255, 255, 255) !important;
     border-color: rgb(255, 255, 255) !important;
@@ -214,6 +223,30 @@ h4 {
     transform: rotate(270deg);
 }
 
+.rotated-0-close-button {
+    position: fixed !important;
+    right:5% !important;
+    top:5% !important;
+}
+
+.rotated-90-close-button {
+    position: fixed !important;
+    right:58% !important;
+    top:0% !important;
+}
+
+.rotated-180-close-button {
+    position: fixed !important;
+    left:5% !important;
+    bottom:5% !important;
+}
+
+.rotated-270-close-button {
+    position: fixed !important;
+    right:36% !important;
+    bottom:0% !important;
+}
+
 #dropdown-menu-homepage {
   left: 50% !important;
   right: auto;
@@ -224,4 +257,10 @@ h4 {
   margin-top: -5px;
   margin-bottom: 16px !important;
   color:rgb(80, 80, 80);
+}
+
+.close {
+    color: #fff;
+    opacity: 1;
+    font-size: 37px;
 }

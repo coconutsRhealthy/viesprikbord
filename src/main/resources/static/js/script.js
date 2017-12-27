@@ -115,18 +115,17 @@ mainApp.controller('prikbordController', function($scope, $http) {
         }
     }
 
-//    window.onclick = function(event) {
-//        if($scope.lightBoxOpen == true) {
-//            $scope.counter++;
-//
-//            if($scope.counter % 2 == 0) {
-//                $('#myModal').modal('hide');
-//                $scope.counter = 0;
-//                $scope.lightBoxOpen == false;
-//            }
-//
-//        }
-//    }
+    $scope.getLightBoxClosingButtonPostionClass = function() {
+        if($scope.lightBoxRotation == 90) {
+            return "rotated-90-close-button";
+        } else if($scope.lightBoxRotation == 180) {
+            return "rotated-180-close-button";
+        } else if($scope.lightBoxRotation == 270) {
+            return "rotated-270-close-button";
+        } else {
+            return "rotated-0-close-button";
+        }
+    }
 
     $scope.setSupermarketForDbPost = function(superMarket) {
         $scope.chooseSupermarketButtonTextUpload = superMarket;
